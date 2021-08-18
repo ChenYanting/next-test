@@ -3,10 +3,10 @@ import React from "react";
 function Blog() {
     const [posts, setPosts] = React.useState([]);
     React.useEffect(() => {
-        fetch('http://localhost:3000/api/posts').then((result) => {
-            return result.json();
-        }).then((posts) => {
-            setPosts(posts);
+        fetch('https://gorest.co.in/public/v1/posts').then((response) => {
+            return response.json();
+        }).then((result) => {
+            setPosts(result.data);
         });
     }, []);
     return (

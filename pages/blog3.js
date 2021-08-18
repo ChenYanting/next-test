@@ -12,11 +12,11 @@ function Blog({ posts }) {
 }
 
 export async function getServerSideProps() {
-    const res = await fetch('http://localhost:3000/api/posts');
+    const res = await fetch('https://gorest.co.in/public/v1/posts');
     const posts = await res.json();
     return {
         props: {
-            posts,
+            posts: posts.data,
         },
     };
 }

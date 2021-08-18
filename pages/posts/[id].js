@@ -11,19 +11,19 @@ function Post({ title }) {
 }
 
 export async function getStaticProps({ params }) {
-    const result = await fetch(`http://localhost:3000/api/posts/${params.id}`);
+    const result = await fetch(`https://gorest.co.in/public/v1/posts/${params.id}`);
     const post = await result.json();
     return {
         props: {
-            title: post.title,
+            title: post.data.title,
         }
     };
 }
 
 export async function getStaticPaths() {
-    const result = await fetch('http://localhost:3000/api/posts');
+    const result = await fetch('https://gorest.co.in/public/v1/posts/');
     const posts = await result.json();
-    const paths = posts.map((post) => {
+    const paths = posts.data.map((post) => {
         return {
             params: {
                 id: post.id.toString(),
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
     return {
         paths: [{
             params: {
-                id: '1',
+                id: '69',
             },
         }],
         fallback: true,
